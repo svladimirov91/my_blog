@@ -1,3 +1,4 @@
+from django.contrib.auth import get_user_model
 from django.db import models
 from core.models import TimestampedModel
 from django.utils.text import slugify
@@ -14,7 +15,7 @@ class Category(TimestampedModel):
         blank=True
     )
     owner = models.ForeignKey(
-        'users.User',
+        get_user_model(),
         on_delete=models.CASCADE,
         related_name='categories',
         help_text='Владелец категории'
