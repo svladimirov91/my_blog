@@ -1,4 +1,5 @@
 import pytest
+from django.db import IntegrityError
 from django.utils.text import slugify
 from categories.models import Category
 from django.contrib.auth import get_user_model
@@ -28,6 +29,6 @@ def test_category_unique_name():
     user = User.objects.create_user(username='owner', password='pass')
     Category.objects.create(name='Уникальная', owner=user)
 
-    with pytest.raises(Exception):
+    with pytest.raises(IntegrityError):
         # Пробуем создать дубликат
         Category.objects.create(name='Уникальная', owner=user)
