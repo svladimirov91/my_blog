@@ -12,7 +12,7 @@ class Category(TimestampedModel):
     slug = models.SlugField(
         max_length=100,
         unique=True,
-        blank=True
+        blank=False
     )
     owner = models.ForeignKey(
         get_user_model(),

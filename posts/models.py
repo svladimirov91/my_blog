@@ -37,11 +37,6 @@ class Post(UUIDModel, TimestampedModel):
         default=False,
         verbose_name='Опубликовано?'
     )
-    published_at = models.DateTimeField(
-        null=True,
-        blank=True,
-        verbose_name='Дата публикации'
-    )
 
     class Meta:
         verbose_name = 'Публикация'
