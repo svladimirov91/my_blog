@@ -33,7 +33,7 @@ class Category(TimestampedModel):
     class Meta:
         verbose_name = 'Категория'
         verbose_name_plural = 'Категории'
-        ordering = ['name']  # Сортировка по умолчанию
+        ordering = ['name']
 
     def __str__(self):
         return self.name

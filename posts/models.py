@@ -1,6 +1,7 @@
 import uuid
 from django.contrib.auth import get_user_model
 from django.db import models
+from django.utils import timezone
 from django.utils.text import slugify
 from core.models import TimestampedModel, UUIDModel
 from categories.models import Category
@@ -52,7 +53,7 @@ class Post(UUIDModel, TimestampedModel):
     def save(self, *args, **kwargs):
         """Автогенерация slug при создании поста."""
         if not self.slug:
-            self.slug = slugify(f'{self.title}-{uuid.uuid4().hex[:6]}')  # Уникальный slug
+            self.slug = slugify(f'{self.title}-{uuid.uuid4().hex[:6]}')
         super().save(*args, **kwargs)
 
     def publish(self):
